@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layouts/layout1}">
+
+<th:block layout:fragment="css">
+	<style>
+body {
+	margin: 0;
+	color: #6a6f8c;
+	background: #c8c8c8;
+	font: 600 16px/18px 'Open Sans', sans-serif;
+}
+
+*, :after, :before {
+	box-sizing: border-box
+}
+
+.clearfix:after, .clearfix:before {
+	content: '';
+	display: table
+}
+
+.clearfix:after {
+	clear: both;
+	display: block
+}
+
+a {
+	color: inherit;
+	text-decoration: none
+}
+
+.login-wrap {
+	width: 100%;
+	margin: auto;
+	max-width: 525px;
+	min-height: 670px;
+	position: relative;
+	background:
+		url(https://raw.githubusercontent.com/khadkamhn/day-01-login-form/master/img/bg.jpg)
+		no-repeat center;
+	box-shadow: 0 12px 15px 0 rgba(0, 0, 0, .24), 0 17px 50px 0
+		rgba(0, 0, 0, .19);
+}
+
+.login-html {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	padding: 90px 70px 50px 70px;
+	background: rgba(40, 57, 101, .9);
+}
+
+.login-html .sign-in-htm, .login-html .sign-up-htm {
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	position: absolute;
+	transform: rotateY(180deg);
+	backface-visibility: hidden;
+	transition: all .4s linear;
+}
+
+.login-html .sign-in, .login-html .sign-up, .login-form .group .check {
+	display: none;
+}
+
+.login-html .tab, .login-form .group .label, .login-form .group .button
+	{
+	text-transform: uppercase;
+}
+
+.login-html .tab {
+	font-size: 22px;
+	margin-right: 15px;
+	padding-bottom: 5px;
+	margin: 0 15px 10px 0;
+	display: inline-block;
+	border-bottom: 2px solid transparent;
+}
+
+.login-html .sign-in:checked+.tab, .login-html .sign-up:checked+.tab {
+	color: #fff;
+	border-color: #1161ee;
+}
+
+.login-form {
+	min-height: 345px;
+	position: relative;
+	perspective: 1000px;
+	transform-style: preserve-3d;
+}
+
+.login-form .group {
+	margin-bottom: 15px;
+}
+
+.login-form .group .label, .login-form .group .input, .login-form .group .button
+	{
+	width: 100%;
+	color: #fff;
+	display: block;
+}
+
+.login-form .group .input, .login-form .group .button {
+	border: none;
+	padding: 15px 20px;
+	border-radius: 25px;
+	background: rgba(255, 255, 255, .1);
+}
+
+.login-form .group input[data-type="password"] {
+	text-security: circle;
+	-webkit-text-security: circle;
+}
+
+.login-form .group .label {
+	color: #aaa;
+	font-size: 12px;
+}
+
+.login-form .group .button {
+	background: #1161ee;
+}
+
+.login-form .group label .icon {
+	width: 15px;
+	height: 15px;
+	border-radius: 2px;
+	position: relative;
+	display: inline-block;
+	background: rgba(255, 255, 255, .1);
+}
+
+.login-form .group label .icon:before, .login-form .group label .icon:after
+	{
+	content: '';
+	width: 10px;
+	height: 2px;
+	background: #fff;
+	position: absolute;
+	transition: all .2s ease-in-out 0s;
+}
+
+.login-form .group label .icon:before {
+	left: 3px;
+	width: 5px;
+	bottom: 6px;
+	transform: scale(0) rotate(0);
+}
+
+.login-form .group label .icon:after {
+	top: 6px;
+	right: 0;
+	transform: scale(0) rotate(0);
+}
+
+.login-form .group .check:checked+label {
+	color: #fff;
+}
+
+.login-form .group .check:checked+label .icon {
+	background: #1161ee;
+}
+
+.login-form .group .check:checked+label .icon:before {
+	transform: scale(1) rotate(45deg);
+}
+
+.login-form .group .check:checked+label .icon:after {
+	transform: scale(1) rotate(-45deg);
+}
+
+.login-html .sign-in:checked+.tab+.sign-up+.tab+.login-form .sign-in-htm
+	{
+	transform: rotate(0);
+}
+
+.login-html .sign-up:checked+.tab+.login-form .sign-up-htm {
+	transform: rotate(0);
+}
+
+.hr {
+	height: 2px;
+	margin: 60px 0 50px 0;
+	background: rgba(255, 255, 255, .2);
+}
+
+.foot-lnk {
+	text-align: center;
+}
+</style>
+</th:block>
+
+<div class="login-wrap" layout:fragment="content">
+	<div class="login-html">
+		<input id="tab-1" type="radio" name="tab" class="sign-in" checked><label
+			for="tab-1" class="tab">로그인</label> <input id="tab-2" type="radio"
+			name="tab" class="sign-up"><label for="tab-2" class="tab"></label>
+		<div class="login-form">
+			<form role="form" action="/members/login" method="post">
+				<div class="sign-in-htm">
+					<div class="group">
+						<label th:for="email" class="label">이메일</label> <input
+							type="email" class="input" id="email" name="email"
+							placeholder="이메일을 입력해주세요">
+					</div>
+					<div class="group">
+						<label th:for="password" class="label">비밀번호</label> <input
+							type="password" class="input" id="password" name="password"
+							data-type="password" placeholder="비밀번호를 입력해주세요">
+					</div>
+					<div class="group">
+						<input id="id_save" name="id_save" type="checkbox" class="check"
+							checked> <label for="check"><span class="icon"></span>
+							이메일 기억</label>
+					</div>
+					<div class="group">
+						<input type="submit" id="loginbtn" class="button" value="로그인">
+					</div>
+					<div class="hr"></div>
+					<div class="foot-lnk">
+						<a href="#forgot">Forgot Password?</a>
+					</div>
+				</div>
+				<input type="hidden" th:name="${_csrf.parameterName}"
+					th:value="${_csrf.token}">
+			</form>
+
+		</div>
+
+	</div>
+</div>
+
+<th:block layout:fragment="script">
+	<script type="text/javascript" th:src="@{/js/cookie.js}"></script>
+	<script th:inline="javascript">
+		$(document).ready(function() {
+			var userInputId = getCookie("userInputId"); //쿠키값(이메일주소)을 가져온다.
+			var setCookieYN = getCookie("setCookieYN"); //쿠키값(이메일 저장 여부)을 가져온다.
+
+			if (setCookieYN == 'Y') { //이메일 저장 여부가 Y면
+				$("#id_save").prop("checked", true); //이메일 저장 체크박스를 체크한다
+				$("#email").val(userInputId); //이메일 input창에는 쿠키에서 가져온 이메일 주소를 넣는다.
+			} else {
+				$("#id_save").prop("checked", false);
+			}
+
+			//로그인 버튼 클릭시 쿠키에 이메일 저장여부, 이메일 저장
+			$("#loginbtn").click(function() {
+
+				if ($("#id_save").is(":checked")) { //이메일 저장에 체크가 되어있다면
+					var userInputId = $("#email").val(); //이메일 값을 가지고 온다.
+
+					//쿠키 생성
+					setCookie("userInputId", userInputId, 60); //이메일 저장
+					setCookie("setCookieYN", "Y", 60); //이메일 저장여부 저장
+				} else {
+					//쿠키 삭제
+					deleteCookie("userInputId");
+					deleteCookie("setCookieYN");
+				}
+
+			});
+		});
+	</script>
+</th:block>
+
+</html>
+
+
+
+
+
+
+
+
+

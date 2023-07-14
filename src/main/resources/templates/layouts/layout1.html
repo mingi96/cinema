@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<title>cinema</title>
+<!-- Bootstrap -->
+<link th:href="@{/bootstrap/css/bootstrap.css}" rel="stylesheet"
+	type="text/css" />
+<!-- Animate.css -->
+<link th:href="@{/animate.css/animate.css}" rel="stylesheet"
+	type="text/css" />
+<!-- Font Awesome iconic font -->
+<link th:href="@{/fontawesome/css/fontawesome-all.css}"
+	rel="stylesheet" type="text/css" />
+<!-- Magnific Popup -->
+<link th:href="@{/magnific-popup/magnific-popup.css}" rel="stylesheet"
+	type="text/css" />
+<!-- Slick carousel -->
+<link th:href="@{/slick/slick.css}" rel="stylesheet" type="text/css" />
+<!-- Fonts -->
+<link
+	th:href='@{https://fonts.googleapis.com/css?family=Oswald:300,400,500,700}'
+	rel='stylesheet' type='text/css'>
+<link
+	th:href='@{https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700}'
+	rel='stylesheet' type='text/css'>
+<!-- Theme styles -->
+<link th:href="@{/css/dot-icons.css}" rel="stylesheet" type="text/css">
+<link th:href="@{/css/theme.css}" rel="stylesheet" type="text/css">
+
+<!-- 각 페이지의 CSS가 작성될 위치 -->
+<th:block layout:fragment="css"></th:block>
+</head>
+<body>
+	<div class="site-wrap">
+		<div th:replace="fragments/header::header"></div>
+		<div layout:fragment="content" class="content"></div>
+		<div th:replace="fragments/footer::footer"></div>
+	</div>
+
+	<!-- 공통으로 쓰이는 js -->
+	<!-- jQuery library -->
+	<script th:src="@{/js/jquery-3.3.1.js}"></script>
+	<!-- Bootstrap -->
+	<script th:src="@{/bootstrap/js/bootstrap.js}"></script>
+	<!-- Paralax.js -->
+	<script th:src="@{/parallax.js/parallax.js}"></script>
+	<!-- Waypoints -->
+	<script th:src="@{/waypoints/jquery.waypoints.min.js}"></script>
+	<!-- Slick carousel -->
+	<script th:src="@{/slick/slick.min.js}"></script>
+	<!-- Magnific Popup -->
+	<script th:src="@{/magnific-popup/jquery.magnific-popup.min.js}"></script>
+	<!-- Inits product scripts -->
+	<script th:src="@{/js/script.js}"></script>
+
+	<!-- 각 페이지의 스크립트가 작성될 위치 -->
+	<th:block layout:fragment="script"></th:block>
+</body>
+</html>
