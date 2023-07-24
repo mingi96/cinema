@@ -1,0 +1,531 @@
+@charset "UTF-8";
+
+h2 {
+	margin-left: 10%;
+	width: 90%;
+	border-bottom: 1px solid black;
+	padding-bottom: 10px;
+}
+
+.box {
+	width: 70%;
+	margin-left: 10%;
+	position: relative;
+}
+
+.text-title {
+	width: 80%;
+	height: 30px;
+}
+
+.text-title>h3 {
+	text-align: left;
+	height: 2px;
+}
+
+#button {
+	color: white;
+	display: block;
+	background-color: gray;
+	width: 120px;
+	height: 300px;
+}
+
+.reset-button {
+	text-align: right;
+	float: right;
+	width: 70px;
+	height: 30px;
+	border: 1px solid rgb(197, 196, 196);
+	background-color: white;
+	text-align: right;
+	border-radius: 7px;
+	font-size: small;
+	font-weight: 550;
+	color: rgb(12, 9, 22);
+	position: sticky;
+}
+
+.fa-minus-circle {
+	width: 2px;
+	height: 2px;
+}
+
+.special {
+	font-size: 10px;
+	float: left;
+	width: 60%;
+}
+
+.date {
+	float: left;
+	font-size: 10px;
+	text-decoration: none;
+}
+
+em {
+	text-decoration: none;
+}
+
+.all-check-people {
+	display: flex;
+	width: 70%;
+	margin-left: 10%;
+	margin-top: 25px;
+	border-left: 1px solid rgb(197, 196, 196);
+	border-right: 1px solid rgb(197, 196, 196);
+	height: 10%;
+	top: 20px;
+}
+
+.check-people-box {
+	position: relative;
+	display: flex;
+	width: 10px;
+	margin-left: 10%;
+}
+
+.check-people {
+	float: left;
+	display: block;
+	clear: both;
+	width: 20%;
+	height: 40px;
+	border-top: 1px solid rgb(238, 241, 255);
+	background-color: rgb(238, 241, 255);
+}
+
+.txt {
+	float: left;
+	text-align: center;
+	font-size: small;
+	margin-right: 20px;
+	margin-top: 10px;
+}
+
+.down, .up {
+	width: 18.2px;
+	height: 22px;
+	border-radius: 3px;
+	margin-top: 10px;
+	position: sticky;
+}
+
+.now {
+	width: 20px;
+	height: 22px;
+	margin-top: 10px;
+	position: sticky;
+}
+
+.down, .now, .up {
+	float: left;
+	border: 1px solid rgb(197, 196, 196);
+	background-color: white;
+	margin-top: 5px;
+}
+
+li {
+	text-decoration: none;
+}
+
+.movie-container {
+	float: right;
+	width: 20%;
+	height: 500px;
+	border: 1px solid black;
+	margin-right: 10%;
+	border-radius: 6px;
+	background-color: rgb(53, 47, 47);
+	padding: 8px;
+	position: relative;
+	top: -550px;
+}
+
+.screen-seat {
+	border-left: 1px solid rgb(180, 179, 179);
+	border-right: 1px solid rgb(180, 179, 179);
+	width: 60%;
+	margin-left: 10%;
+	display: block;
+}
+
+.seat-wrapper {
+	border: 1px solid rgb(180, 179, 179);
+	border-top: 1px solid white;
+	width: 60%;
+	margin-left: 10%;
+	height: 500px;
+	float: left;
+}
+
+#seat-layout {
+	width: 90%;
+	height: 500px;
+	position: relative;
+	margin-left: 10%;
+	overflow: auto;
+	cursor: pointer;
+}
+
+#show-seat>button {
+	border: 1px solid white;
+	height: 20px;
+	background-color: rgb(172, 151, 96);
+	width: 60%;
+	float: left;
+}
+
+.movie-detail-area {
+	clear: both;
+	float: left;
+	color: white;
+	width: 60%;
+	height: 60px;
+}
+
+.tit {
+	color: white;
+	font-size: 10px;
+	float: left;
+}
+
+.cate {
+	color: rgb(180, 179, 179);
+	float: left;
+	margin-left: 10%;
+	font-size: 12px;
+}
+
+.title-area {
+	height: 60px;
+	border-bottom: 1px solid rgb(180, 179, 179);
+	padding: 3px;
+}
+
+.img-age {
+	float: left;
+	display: inline;
+}
+
+.movie-detail-area {
+	width: 50%;
+	flex: left;
+	height: 120px;
+	margin-left: 5%;
+}
+
+.ptag {
+	text-align: left;
+	width: 100px;
+	font-size: 8px;
+}
+
+.place {
+	font-size: 12px;
+	text-align: left;
+}
+
+.img-card {
+	float: right;
+	border: 1px solid black;
+	width: 20px;
+	display: flex;
+	margin-right: 30%;
+	height: 120px;
+	position: relative;
+}
+
+#img-movie {
+	width: 80px;
+	float: left;
+	position: sticky;
+	background-attachment: fixed
+}
+
+ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+.arr {
+	background-image: url(/resources/images/bg/bg-other-time-arr-down.png);
+	background-color: rgb(39, 37, 37);
+	background-size: 100%;
+	float: right;
+	color: white;
+	width: 15px;
+}
+
+.now-time {
+	border: 1px solid rgb(53, 47, 47);
+	background-color: rgb(39, 37, 37);
+	font-size: 10px;
+	text-align: left;
+	position: absolute;
+	color: white;
+}
+
+.other-time {
+	float: left;
+	height: 28px;
+	width: 50%;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+.kind-seat {
+	font-size: 10px;
+	color: white;
+	position: sticky;
+	float: left;
+	width: 50%;
+	border: 1px solid white;
+	height: 150px;
+	padding: 30px;
+}
+
+.seat-condition.special {
+	background-color: #028487;
+	background-image: url(/resources/images/btn/condition-disabled.png);
+	background-position: left center;
+}
+
+.fix-fix {
+	position: fixed;
+}
+
+.seat-condition-choise {
+	background-image: url(/resources/images/btn/seat-condition-choice.png);
+	background-size: 100%;
+	text-align: center;
+	color: white;
+	font-size: 1px;
+	width: 18px;
+	height: 17px;
+	margin: 2px;
+}
+
+.seat-condition-finish {
+	background-image: url(/resources/images/btn/seat-condition-finish.png);
+	background-size: 100%;
+	text-align: center;
+	color: white;
+	font-size: 1px;
+	width: 18px;
+	height: 17px;
+	margin: 2px;
+}
+
+.seat-condition-common {
+	background-image: url(/resources/images/btn/seat-condition-common.png);
+	text-align: center;
+	color: white;
+	font-size: 1px;
+	background-size: 100%;
+	width: 20px;
+	height: 17px;
+	margin: 2px;
+}
+
+.seat-condition-disabled {
+	background-image: url(/resources/images/btn/seat-condition-disabled.png);
+	background-size: 100%;
+	text-align: center;
+	color: white;
+	font-size: 1px;
+	width: 20px;
+	height: 17px;
+	margin: 2px;
+}
+
+.seat-em {
+	margin-left: 20px;
+	margin-bottom: 10px;
+	width: 50px;
+	height: 10px;
+	float: left;
+	text-decoration: none;
+	font-style: normal;
+}
+
+.choise-seat {
+	float: left;
+	text-align: center;
+	color: white;
+	width: 50%;
+	height: 150px;
+	border: 1px solid white;
+}
+
+.wrap {
+	float: left;
+	width: 70%;
+	height: 120px;
+	margin-left: 20px;
+	margin-bottom: 30px;
+}
+
+.pay-area {
+	display: block;
+	height: 20px;
+	float: left;
+	width: 100%;
+}
+
+.pay {
+	height: 20px;
+	width: 50%;
+	float: left;
+}
+
+.seat-all {
+	float: left;
+	border: 1px solid white;
+	width: 35px;
+	height: 35px;
+	margin-left: 3px;
+	color: white;
+	background-color: rgb(69, 15, 119);
+	line-height: 35px;
+	font-size: 10px;
+}
+
+.seat-position {
+	float: left;
+	border: 1px solid white;
+	width: 35px;
+	height: 35px;
+	margin-left: 3px;
+	text-align: center;
+}
+
+.count {
+	font-size: 10px;
+	color: rgb(160, 160, 160);
+	text-align: left;
+}
+
+.tit-pay {
+	font-size: 11px;
+	color: white;
+	text-align: left;
+}
+
+.money>em {
+	color: #06b0b3;
+	font-size: large;
+	text-align: right;
+	font-style: normal;
+}
+
+.money>span {
+	color: white;
+	font-size: 11px;
+	text-align: right;
+}
+
+.money {
+	float: right;
+}
+
+.btn-group {
+	padding-top: 70px;
+	height: 10px;
+	width: 110%;
+	padding-right: 13px;
+}
+
+a.button {
+	color: white;
+	border: 1px solid white;
+	display: block;
+	text-align: center;
+	text-decoration: none;
+	height: 30px;
+	width: 50%;
+}
+
+a#pagePrevious {
+	float: left;
+	border-radius: 0 0 0 10px;
+	background-color: rgb(61, 61, 61);
+	color: white;
+	border: 1px solid rgb(61, 61, 61);
+}
+
+a#pageNext {
+	float: right;
+	border-radius: 0 0 10px 0;
+	background-color: #028487;
+	color: white;
+	border: 1px solid #028487;
+}
+
+a#pageNext-1 {
+	float: right;
+	border-radius: 0 0 10px 0;
+	background-color: #028487;
+	color: white;
+	border: 1px solid #028487;
+}
+
+#document-modal {
+	background-color: rgba(0, 0, 0, 0.8);
+	justify-content: center;
+	align-items: center;
+	position: fixed;
+	top: -100px;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	display: none;
+}
+
+.document-modal {
+	width: 400px;
+	border-radius: 5px;
+	overflow: hidden;
+	height: 430px;
+	position: absolute;
+	top: calc(50vh - 210px);
+	left: calc(50vw - 200px);
+}
+
+.document-modal-header {
+	width: 100%;
+	height: 30px;
+	display: flex;
+	align-items: left;
+	justify-content: left;
+	color: white;
+	font-size: 5px;
+	padding-left: 10px;
+	background-color: #743cf7;
+}
+
+.document-modal-body {
+	width: 400px;
+	height: 500px;
+	padding: 1px;
+	background-color: white;
+	word-break: break-word;
+	overflow-y: auto;
+	color: black;
+}
+
+.dot-list {
+	color: black;
+	font-size: 15px
+}
+
+.btn-document-modal {
+	background-color: #743cf7;
+	align-items: left;
+	justify-content: left;
+	color: white;
+	border: 1px solid #743cf7;
+}

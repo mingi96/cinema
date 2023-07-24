@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 
 import com.cinema.constant.MovieSellStatus;
 import com.cinema.dto.MovieFormDto;
+import com.cinema.exception.OutOfStockException;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -33,39 +34,29 @@ public class Movie extends BaseEntity {
 	@Column(nullable = false, length = 50) // not null여부, 컬럼 크기지정
 	private String movieNm; // 영화명 -> movie_name
 
-	@Column(nullable = false)
-	private int price; // 가격 -> price
+	private int price;
 
-	@Column(nullable = false, length = 50) // not null여부, 컬럼 크기지정
-	private String movieYear; // 제작년도 -> movie_year
+	private int stockNumber; // 재고수량 -> stock_number
 
 	@Column(nullable = false, length = 50) // not null여부, 컬럼 크기지정
 	private String movieDirector; // 감독 -> movie_director
 
-	@Column(nullable = false, length = 50) // not null여부, 컬럼 크기지정
+	@Column(nullable = false, length = 100) // not null여부, 컬럼 크기지정
 	private String movieActors; // 배우들 -> movie_actors
 
-	private LocalDateTime mvPeriodS; // 상영시작일
-
-	private LocalDateTime mvPeriodE; // 상영마감일
+	@Column(nullable = false, length = 50) // not null여부, 컬럼 크기지정
+	private String genre; // 장르 -> genre
 
 	@Column(nullable = false, length = 50) // not null여부, 컬럼 크기지정
 	private String mvRuntime; // 런타임 -> mv_runtime
 
-	@Column(nullable = false, length = 50) // not null여부, 컬럼 크기지정
-	private String mvStillcut; // 스틸컷 -> mv_stillcut
-
-	@Column(nullable = false, length = 50) // not null여부, 컬럼 크기지정
-	private String mvPosters; // 포스터 -> mv_posters
-
-	private LocalDateTime mvRegdate; // 등록일
+	private LocalDateTime mvPeriodS; // 개봉일
 
 	@Lob // clob과 같은 큰타입의 문자타입으로 컬럼을 만든다
-	@Column(nullable = false)
+	@Column(nullable = false, length = 1000)
 	private String movieDetail; // 줄거리 - > mv_summary
 
-	@Column(nullable = false)
-	private int stockNumber; // 재고수량 -> stock_number
+	private LocalDateTime mvRegdate; // 등록일
 
 	@Enumerated(EnumType.STRING) // enum의 이름을 DB의 저장
 	private MovieSellStatus movieSellStatus; // 판매상태(SELL, SOLD_OUT) -> item_sell_status
@@ -74,22 +65,17 @@ public class Movie extends BaseEntity {
 	public void updateMovie(MovieFormDto movieFormDto) {
 		this.movieNm = movieFormDto.getMovieNm();
 		this.price = movieFormDto.getPrice();
-		this.movieYear = movieFormDto.getMovieYear();
 		this.movieDirector = movieFormDto.getMovieDirector();
 		this.movieActors = movieFormDto.getMovieActors();
-//		this.mvPeriodS = movieFormDto.getMvPeriodS();
-//		this.mvPeriodE = movieFormDto.getMvPeriodE();
+		this.genre = movieFormDto.getGenre();
 		this.mvRuntime = movieFormDto.getMvRuntime();
-		this.mvStillcut = movieFormDto.getMvStillcut();
-		this.mvPosters = movieFormDto.getMvPosters();
-//		this.mvRegdate = movieFormDto.getMvRegdate();
+		this.mvPeriodS = movieFormDto.getMvPeriodS();
 		this.movieDetail = movieFormDto.getMovieDetail();
+		this.mvRegdate = movieFormDto.getMvRegdate();
+		this.movieSellStatus = movieFormDto.getMovieSellStatus();
 
 	}
 
-	// 재고 증가
-	public void addStock(int stockNumber) {
-		this.stockNumber += stockNumber;
-	}
+	
 
 }

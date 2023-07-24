@@ -21,16 +21,16 @@ public class Reservation {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
-	private LocalDateTime reservationDate; // 예매시간
+	private LocalDateTime reservationDate; // 예매날짜
+
+	private LocalDateTime reservationTime; // 상영시간
 
 	@Enumerated(EnumType.STRING)
 	private ReservationStatus reservationStatus; // 주문상태
 
 	private LocalDateTime rs_regdate; // 생성시간
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "seat_no")
-	private SeatInformation seatNo;
+	private int seatNo;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "member_id")
@@ -59,17 +59,28 @@ public class Reservation {
 
 		reservation.setReservationStatus(ReservationStatus.RESERVATION);
 		reservation.setReservationDate(LocalDateTime.now());
+		
 
 		return reservation;
 	}
 
-	// 주문 취소
-	public void cancelReservation() {
-		this.reservationStatus = ReservationStatus.CANCEL;
-
-		// 재고를 원래대로 돌려 놓는다.
+	// 총 주문 금액
+	public int getTotalPrice() {
+		int totalPrice = 0;
 		for (ReservationMovie reservationMovie : reservationMovies) {
-			reservationMovie.cancel();
+			totalPrice += reservationMovie.getTotalPrice();
 		}
+		return totalPrice;
 	}
+
+//	// 주문 취소
+//	public void cancelReservation() {
+//		this.reservationStatus = ReservationStatus.CANCEL;
+//
+//		// 재고를 원래대로 돌려 놓는다.
+//		for (ReservationMovie reservationMovie : reservationMovies) {
+//			reservationMovie.cancel();
+//		}
+//	}
+
 }

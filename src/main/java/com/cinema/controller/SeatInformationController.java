@@ -12,14 +12,14 @@ import lombok.RequiredArgsConstructor;
 
 @Controller
 @RequiredArgsConstructor
-public class SelectDateController {
+public class SeatInformationController {
 
 	private final MovieService movieService;
 
-	@GetMapping(value = "/selectDate/{movieId}")
+	@GetMapping(value = "/seatInformation/{movieId}")
 	public String movieSelectDate(Model model, @PathVariable("movieId") Long movieId) {
 		MovieFormDto movieFormDto = movieService.getMovieDtl(movieId);
 		model.addAttribute("movie", movieFormDto);
-		return "reservation/selectDate";
+		return "reservation/seatInformation";
 	}
 }

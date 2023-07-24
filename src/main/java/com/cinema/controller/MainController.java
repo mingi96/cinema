@@ -20,18 +20,16 @@ import lombok.RequiredArgsConstructor;
 @Controller
 @RequiredArgsConstructor
 public class MainController {
-
 	private final MovieService movieService;
 
 	@GetMapping(value = "/")
 	public String main(MovieSearchDto movieSearchDto, Optional<Integer> page, Model model) {
 		Pageable pageable = PageRequest.of(page.isPresent() ? page.get() : 0, 6);
 		Page<MainMovieDto> movies = movieService.getMainMoviePage(movieSearchDto, pageable);
-
-//		List<MovieRankDto> moviesRank = movieService.getMovieRankList();
+		List<MovieRankDto> moviesRank = movieService.getMovieRankList();
 
 		model.addAttribute("movies", movies);
-//		model.addAttribute("moviesRank", moviesRank);
+		model.addAttribute("moviesRank", moviesRank);
 		model.addAttribute("movieSearchDto", movieSearchDto);
 
 		return "main";

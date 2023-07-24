@@ -16,9 +16,9 @@
 		<div class="d-background bg-black-80"></div>
 		<div class="top-block top-inner container">
 			<div class="top-block-content">
-				<h1 class="section-title">Movies info</h1>
+				<h1 class="section-title">영화 정보</h1>
 				<div class="page-breadcrumbs">
-					<a class="content-link" href="#">Home</a> <span
+					<a class="content-link" href="/">Home</a> <span
 						class="text-theme mx-2"><i class="fas fa-chevron-right"></i></span>
 					<a class="content-link" href="movies-blocks.html">Movies</a>
 				</div>
@@ -34,7 +34,8 @@
 							<div class="entity-poster" data-role="hover-wrap">
 								<div class="embed-responsive embed-responsive-poster">
 									<img class="embed-responsive-item"
-										src="http://via.placeholder.com/340x510" alt="" />
+										th:src="${movie.movieImgDtoList[0].imgUrl}"
+										th:alt="${movie.movieNm}" />
 								</div>
 								<div class="d-over bg-theme-lighted collapse animated faster"
 									data-show-class="fadeIn show" data-hide-class="fadeOut show">
@@ -49,10 +50,9 @@
 								</div>
 							</div>
 							<div class="entity-content">
-								<h2 class="entity-title">영화제목</h2>
+								<h2 class="entity-title">[[${movie.movieNm}]]</h2>
 								<div class="entity-category">
-									<a class="content-link" href="movies-blocks.html">comedy</a>, <a
-										class="content-link" href="movies-blocks.html">detective</a>
+									<a class="content-link" href="movies-blocks.html">[[${movie.genre}]]</a>
 								</div>
 								<div class="entity-info">
 									<div class="info-lines">
@@ -69,24 +69,21 @@
 									</div>
 								</div>
 								<ul class="entity-list">
-									<li><span class="entity-list-title">Release:</span>July
-										21, 2014 (Dolby Theatre), August 1, 2014 (United States)</li>
-									<li><span class="entity-list-title">Directed:</span> <a
-										class="content-link" href="#">Lindson Wardens</a>, <a
-										class="content-link" href="#">Anabelle One</a></li>
-									<li><span class="entity-list-title">Starring:</span> <a
-										class="content-link" href="#">Octopus Wardens</a>, <a
-										class="content-link" href="#">Quanta Wardens</a>, <a
-										class="content-link" href="#">Anabelle Two</a>, <a
-										class="content-link" href="#">Anabelle Three</a></li>
-									<li><span class="entity-list-title">Production
-											company:</span> <a class="content-link" href="#">Re-Production
-											Bro.</a>, <a class="content-link" href="#">Pentakid</a></li>
-									<li><span class="entity-list-title">Country:</span> <a
-										class="content-link" href="#">USA</a>, <a class="content-link"
-										href="#">India</a></li>
-									<li><span class="entity-list-title">Language:</span>english</li>
-									<li><a class="btn-theme btn" href="selectDate">예매하기</a></li>
+									<li><span class="entity-list-title">개봉일:</span>July 21,
+										2014 (Dolby Theatre), August 1, 2014 (United States)</li>
+									<li><span class="entity-list-title">감독:</span> <a
+										class="content-link" href="#">[[${movie.movieDirector}]]</a></li>
+									<li><span class="entity-list-title">배우:</span> <a
+										class="content-link" href="#">[[${movie.movieActors}]]</a></li>
+									<li><span class="entity-list-title">장르:</span> <a
+										class="content-link" href="#">[[${movie.genre}]]</a></li>
+									<li><span class="entity-list-title">기본 정보:</span> <a
+										class="content-link" href="#">USA</a></li>
+									<li><span class="entity-list-title">상영 시간:</span> <a
+										class="content-link" href="#">[[${movie.mvRuntime}]]</a></li>
+									<li><span class="entity-list-title">국가:</span>english</li>
+									<li><a class="btn-theme btn"
+										th:href="'/selectDate/' + ${movie.id}">예매하기</a></li>
 								</ul>
 							</div>
 						</div>
@@ -102,17 +99,7 @@
 								unknown printer took a galley of type and scrambled it to make a
 								type specimen book.</p>
 							<h6 class="text-dark">Why do we use it?</h6>
-							<p>It is a long established fact that a reader will be
-								distracted by the readable content of a page when looking at its
-								layout. The point of using Lorem Ipsum is that it has a
-								more-or-less normal distribution of letters, as opposed to using
-								'Content here, content here', making it look like readable
-								English. Many desktop publishing packages and web page editors
-								now use Lorem Ipsum as their default model text, and a search
-								for 'lorem ipsum' will uncover many web sites still in their
-								infancy. Various versions have evolved over the years, sometimes
-								by accident, sometimes on purpose (injected humour and the
-								like).</p>
+							<p>[[${movie.movieDetail}]]</p>
 							<h6 class="text-dark">Where does it come from?</h6>
 							<p>Contrary to popular belief, Lorem Ipsum is not simply
 								random text. It has roots in a piece of classical Latin
@@ -171,7 +158,7 @@
 									<div class="entity-preview" data-role="hover-wrap">
 										<div class="embed-responsive embed-responsive-16by9">
 											<img class="embed-responsive-item"
-												src="http://via.placeholder.com/1920x1080" alt="" />
+												th:src="${movie.movieImgDtoList[1].imgUrl}" alt="" />
 										</div>
 										<div class="d-over bg-black-40 collapse animated faster"
 											data-show-class="fadeIn show" data-hide-class="fadeOut show">
@@ -195,7 +182,7 @@
 									<div class="entity-preview" data-role="hover-wrap">
 										<div class="embed-responsive embed-responsive-16by9">
 											<img class="embed-responsive-item"
-												src="http://via.placeholder.com/1920x1080" alt="" />
+												th:src="${movie.movieImgDtoList[2].imgUrl}" alt="" />
 										</div>
 										<div class="bg-theme-lighted d-over collapse animated faster"
 											data-show-class="fadeIn show" data-hide-class="fadeOut show">
@@ -220,7 +207,7 @@
 									<div class="entity-preview" data-role="hover-wrap">
 										<div class="embed-responsive embed-responsive-16by9">
 											<img class="embed-responsive-item"
-												src="http://via.placeholder.com/1920x1080" alt="" />
+												th:src="${movie.movieImgDtoList[3].imgUrl}" alt="" />
 										</div>
 										<div class="d-over bg-black-40 collapse animated faster"
 											data-show-class="fadeIn show" data-hide-class="fadeOut show">

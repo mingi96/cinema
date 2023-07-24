@@ -72,7 +72,8 @@ public class MovieRepositoryCustomImpl implements MovieRepositoryCustom {
 		// 1. 컬럼과 dto객체의 필드가 일치해야 한다.
 		// 2. dot객체의 생성자에 @QueryProjection를 반드시 사용해야 한다.
 		List<MainMovieDto> content = queryFactory
-				.select(new QMainMovieDto(movie.id, movie.movieNm, movie.movieDetail, movieImg.imgUrl, movie.price))
+				.select(new QMainMovieDto(movie.id, movie.movieNm, movie.movieDetail, movie.genre, movieImg.imgUrl,
+						movie.price))
 				.from(movieImg).join(movieImg.movie, movie).where(movieImg.repimgYn.eq("Y"))
 				.where(movieNmLike(movieSearchDto.getSearchQuery())).orderBy(movie.id.desc())
 				.limit(pageable.getPageSize()).fetch();

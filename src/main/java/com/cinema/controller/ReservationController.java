@@ -89,7 +89,6 @@ public class ReservationController {
 		}
 
 		// 2. 주문취소
-		reservationService.cancelReservation(reservationId);
 
 		return new ResponseEntity<Long>(reservationId, HttpStatus.OK); // 성공했을때
 	}

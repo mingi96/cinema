@@ -21,12 +21,8 @@ public class MovieFormDto {
 
 	@NotBlank(message = "영화명은 필수 입력입니다.")
 	private String movieNm;
-
-	@NotNull(message = "가격은 필수 입력입니다.")
+	
 	private int price;
-
-	@NotBlank(message = "제작년도는 필수 입력입니다.")
-	private String movieYear;
 
 	@NotBlank(message = "영화감독은 필수 입력입니다.")
 	private String movieDirector;
@@ -34,29 +30,18 @@ public class MovieFormDto {
 	@NotBlank(message = "배우들은 필수 입력입니다.")
 	private String movieActors;
 
-//	@NotBlank(message = "상영시작일은 필수 입력입니다.")
-//	private LocalDateTime mvPeriodS;
-//
-//	@NotBlank(message = "상영마감일은 필수 입력입니다.")
-//	private LocalDateTime mvPeriodE;
+	@NotBlank(message = "장르는 필수 입력입니다.")
+	private String genre;
 
 	@NotBlank(message = "상영시간은 필수 입력입니다.")
 	private String mvRuntime;
 
-	@NotBlank(message = "스틸컷은 필수 입력입니다.")
-	private String mvStillcut;
-
-	@NotBlank(message = "영화포스터는 필수 입력입니다.")
-	private String mvPosters;
-
-//	@NotBlank(message = "등록일은 필수 입력입니다.")
-//	private LocalDateTime mvRegdate;
+	private LocalDateTime mvPeriodS;
 
 	@NotBlank(message = "줄거리는 필수 입력입니다.")
 	private String movieDetail;
 
-	@NotNull(message = "재고는 필수 입력입니다.")
-	private int stockNumber;
+	private LocalDateTime mvRegdate;
 
 	private MovieSellStatus movieSellStatus;
 

@@ -18,7 +18,7 @@
 			<div class="row">
 				<div class="col-md-12 mb-0">
 					<a href="/">Home</a> <span class="mx-2 mb-0">/</span> <strong
-						class="text-black">영화등록</strong>
+						class="text-black">영화수정</strong>
 				</div>
 			</div>
 		</div>
@@ -28,9 +28,10 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
-					<h2 class="h3 mb-3 text-black">영화등록</h2>
+					<h2 class="h3 mb-3 text-black">영화수정</h2>
 					<div class="p-3 p-lg-5 border">
-						<form role="form" action="/admin/movie/new" method="post"
+						<form role="form"
+							th:action="@{'/admin/movie/' + ${movieFormDto.id}}" method="post"
 							enctype="multipart/form-data" th:object="${movieFormDto}"
 							name="movieForm">
 
@@ -129,19 +130,23 @@
 
 
 							<div class="form-group row"
-								th:if="${#lists.isEmpty(movieFormDto.movieImgDtoList)}"
-								th:each="num: ${#numbers.sequence(1,5)}">
+								th:if="${not #lists.isEmpty(movieFormDto.movieImgDtoList)}"
+								th:each="movieImgDto, status : ${movieFormDto.movieImgDtoList}">
 								<div class="col-md-12">
 									<label for="formFile" class="form-label"
-										th:text="영화이미지 + ${num}"></label> <input class="form-control"
-										type="file" id="movieImgFile" name="movieImgFile">
+										th:text="${not #strings.isEmpty(movieImgDto.oriImgName)} 
+  										? ${movieImgDto.oriImgName} : '영화이미지' + ${status.index+1}"></label>
+									<input type="hidden" name="movieImgIds"
+										th:value="${movieImgDto.id}"> <input
+										class="form-control" type="file" id="movieImgFile"
+										name="movieImgFile">
 								</div>
 							</div>
 
 							<div class="form-group">
 								<div class="col-md-12 d-flex justify-content-center">
 									<button type="button" onclick="beforeSubmit()"
-										class="btn btn-primary mb-3" style="width: 150px;">상품등록</button>
+										class="btn btn-primary mb-3" style="width: 150px;">영화수정</button>
 								</div>
 							</div>
 
@@ -210,7 +215,5 @@
 		
 	</script>
 </th:block>
-
-
 
 </html>

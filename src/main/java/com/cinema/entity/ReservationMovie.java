@@ -12,7 +12,7 @@ import lombok.ToString;
 @ToString
 public class ReservationMovie extends BaseEntity {
 	@Id
-	@Column(name = "order_movie_id")
+	@Column(name = "reservation_movie_id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
@@ -35,6 +35,7 @@ public class ReservationMovie extends BaseEntity {
 		reservationMovie.setCount(count);
 		reservationMovie.setReservationPrice(movie.getPrice());
 
+
 		return reservationMovie;
 	}
 
@@ -42,9 +43,6 @@ public class ReservationMovie extends BaseEntity {
 		return reservationPrice * count;
 	}
 
-	// 재고를 원래대로
-	public void cancel() {
-		this.getMovie().addStock(count);
-	}
+	
 
 }

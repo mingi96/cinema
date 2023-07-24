@@ -1,0 +1,83 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+
+/* common */
+h1,
+h4,
+p,
+span,
+a {
+    font-family: 'Noto Sans KR';
+    font-weight: 500px;
+}
+
+.container{
+	min-width: 1250px;
+}
+
+/* navbar */
+#header {
+	border-bottom: 2px solid #000;
+}
+
+#navbar-2 .util-list li a {
+	color: black;
+    font-size: 18px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#navbar-top .navbar-nav .nav-link {
+	color: black;
+    font-size: 13px;
+    
+}
+
+#navbarNav .navbar-nav .nav-link {
+	font-family: Noto Sans KR;
+	font-weight: bold;
+	color: black;
+    font-size: 20px;
+    margin-left: 35px;
+    margin-right: 35px;
+} 
+
+.navbar-light .search-box {
+    position: relative;
+    width: 380px;
+    margin: 0 auto;
+}
+
+.navbar-light input {
+    position: relative;
+    height: 44px;
+    padding: 15px 72px 15px 9px;
+    border: none;
+    border-radius: inherit;
+    border-bottom: 2px solid #000;
+    font-size: 14px;
+}
+
+.navbar-light button {
+    position: absolute;
+    top: 0;
+	right: 10px;
+    left: 31;
+    width: 37px;
+    height: 65px;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: none;
+}
+
+#img-logo {
+	display: block;
+	margin: auto;
+	width: 70%;
+}
+
+a {
+	word-break: keep-all;
+}

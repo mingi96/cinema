@@ -106,14 +106,6 @@ public class ReservationService {
 		return true;
 	}
 
-	// 주문 취소
-	public void cancelReservation(Long reservationId) {
-		Reservation reservation = reservationRepository.findById(reservationId)
-				.orElseThrow(EntityNotFoundException::new);
-		// OrderStatus를 update -> entity의 필드 값을 바꿔주면 된다.
-		reservation.cancelReservation();
-	}
-
 	// 주문 삭제
 	public void deleteReservation(Long reservationId) {
 		// ★delete하기 전에 select를 한번 해준다

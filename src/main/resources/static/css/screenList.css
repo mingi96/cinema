@@ -1,0 +1,457 @@
+
+h2{
+    margin-left: 10%;
+}
+.pre{
+    background-image: url(/resources/images/btn/pre-arro.png);
+    background-size: 100%;
+    border: 1px solid white;
+    width: 15px;
+    height: 15px;
+    opacity: 0.6;
+}
+.next{
+    background-image: url(/resources/images/btn/next-arro.png);
+    background-size: 100%;
+    border: 1px solid white;
+    width: 15px;
+    height: 15px;
+    opacity: 0.6;
+}
+button.mon.active{
+	background-color: #CBD9DB;
+}
+
+.theater-spacial-button.active{
+	background-color: #CBD9DB;
+}
+.theater-all-button.active{
+	background-color: #CBD9DB;
+}
+.mon{
+    background-color:white;
+    border: 1px white;
+    width: 80px;
+    height: 6px;
+    display: inline;
+    font-size: medium;
+    padding-bottom: 30px;
+  }
+strong{
+    display: inline;
+    font-size: large;
+}
+.day{
+    border-top: 1px solid;
+    border-bottom: 1px solid rgb(207, 204, 204);
+    width:1000px;
+    margin-left: 10%;
+    box-sizing: border-box;
+}
+.now-day{
+	margin-top: 10px;
+}
+
+.explain-button{
+	text-align: center;
+	font-size: 10px;
+	color: black;
+}
+.pre-arrow{
+    width: 40px;
+    height: 30px;
+}
+.sat{
+    background-color:white;
+    border: 1px white;
+    width: 80px;
+    height: 6px;
+    display: inline;
+    font-size: medium;
+    padding-bottom: 30px;
+    color: rgb(84, 84, 224);
+}
+.sun{
+    background-color:white;
+    border: 1px white;
+    width: 80px;
+    height: 6px;
+    display: inline;
+    font-size: medium;
+    padding-bottom: 30px;
+    display: inline;
+    color: rgb(255, 113, 113);
+}
+.calender {
+    width: 28px;
+    height: 28px;
+    margin: 8px;
+    border: 1px solid white;
+    background-image: url(/resources/images/btn/calendar.png);
+    background-size: 100%;
+    opacity: 0.9;
+}
+
+.left-one{
+    height: 535px;
+    width: 25%;
+    border: 1px solid rgb(207, 204, 204);
+    border-left: 1px solid white;
+    border-top: 1px solid white;
+    padding-bottom: 35px;
+}
+.movie-name-button{
+    height: 30px;
+    background-color: white;
+    border: 1px solid rgb(207, 204, 204);
+    border-bottom: 1px solid white;
+    float: left;
+    width: 90%;
+    font-weight: bold;
+}
+.movie-container{
+    width: 1000px;
+    height: 600px;
+    float: left;
+    margin-left: 10%;
+    box-sizing: border-box;
+    display: flex;
+}
+.movie-list{
+    overflow: auto;
+    width: 200px;
+    height: 315px;
+    border: 1px solid rgb(207, 204, 204);
+    border-top:1px solid white;
+}
+.movie-list::-webkit-scrollbar {
+    width: 10px;
+  }
+.movie-list::-webkit-scrollbar-thumb {
+    background-color: #2f3542;
+    border-radius: 10px;
+  }
+.movie-list::-webkit-scrollbar-track {
+    background-color: rgb(218, 216, 216);
+    border-radius: 10px;
+    box-shadow: inset 0px 0px 5px white;
+}
+.movie-button{
+    vertical-align: sub;
+    text-align: left;
+    align-items: left;
+    width: 90%;
+    height: 18%;
+    background: white;
+    margin: 2px;
+    border: 1px solid white;
+    display: black;
+}
+.movie-button.active{
+	background: #CBD9DB;
+	height: 18%;
+}
+.movie-button img{
+	width:15px;
+	height: 15px;
+	align-items: left;
+	display: block;
+}
+.txt{
+    text-align: left;
+    font-size: 15px;
+    display: black;
+}
+.buttonicon {
+    width: 11px;
+    float: right;
+    margin: 2px;
+}
+.movie-img{
+    width: 200px;
+    height: 100px;
+    border: 1px solid black;
+    text-align: center;
+    font-size: 12px;
+    margin-top: 2px;
+}
+.choice-list{
+    width: 120px;
+    height: 65px;
+    border: 1px solid rgb(201, 201, 201);
+    float: left;
+    align-items: left;
+    margin: 7.3px;
+    display:none;
+}
+.check-theater{
+	text-align: center;
+	align-items: center;
+	font-size: 20px;
+	width: 100px;
+	height: 100px;
+	border: 1px solid black;
+	border-radius: 100%;
+	margin-left: 20px;
+}
+img+.del{
+    float: right;
+    width: 10px;
+    height: 13px;
+    display: inline;
+    background: white;
+    border: 1px solid white;
+    background-image: url(/resources/images/btn/del.png);
+    background-size: 10px;
+}
+.del{
+    border: 1px solid white;
+    background-image: url(/resources/images/bg/bg-empty-cell.png);
+    background-size:100%;
+    overflow: visible;
+    table-layout: fixed;
+    width: 54px;
+    height: 45px;
+    opacity: 0.6;
+}
+.center-one{
+    float: left;
+    width:300px;
+    height:535px;
+    border:1px solid rgb(201, 201, 201);
+   
+
+   
+}
+ul.navbar-nav {
+	list-style:none;
+    padding-left:0px;
+
+}
+.right-one{
+    float: left;
+    width:51%;
+    height:536px;
+    border:1px solid rgb(201, 201, 201);
+    border-right: 1px solid white;
+    
+}
+.right-one>h3{
+    padding-left: 20px;
+}
+.theater-all-button,.theater-spacial-button{
+    width: 137px;
+    border: 1px solid rgb(201, 201, 201);
+    border-bottom: 1px solid white;
+    background-color: white;
+    float: left;
+    height: 30px;
+    font-weight: bold;
+}
+.list-theater-detail{
+    float: left;
+    display: flex;
+    overflow: auto;
+    height: 300px;
+}
+.list-theater-detail::-webkit-scrollbar {
+    width: 10px;
+  }
+.list-theater-detail::-webkit-scrollbar-thumb {
+    background-color: #2f3542;
+    border-radius: 10px;
+  }
+.list-theater-detail::-webkit-scrollbar-track {
+    background-color: rgb(218, 216, 216);
+    border-radius: 10px;
+    box-shadow: inset 0px 0px 5px white;
+}
+.all-theater-list{
+    border-right-style: 1px solid rgb(207, 204, 204);
+    border: 1px solid white;
+    width: 134px;
+    height: 300px;
+    display: inline-block;
+    vertical-align: auto;   
+}
+p{
+	color: black;
+	
+}
+.theater-choies{
+    width: 130px;
+    height: auto;
+    border: 1px solid white;
+    border-left: 1px solid rgb(207, 204, 204);
+}
+
+.list-theater-button,.theater-choies-button{
+    display: block;
+    border: 1px solid white;
+    background-color: white;
+    height: 11%;
+}
+.list-theater-button.active{
+	background-color: #CBD9DB;
+}
+.list-theater-button{
+    font-size: 14px;
+}
+.theater-choies-check{
+    border: 1px solid black;
+    width: 275px;
+    height: 100px;
+    display: flex;
+    font-size: 12px;
+    margin-top: 355px;
+    text-align: center;
+    background-color: rgb(255, 254, 254);
+    
+}
+.check-content {
+    margin-left: 70px;
+    margin-top: 20px;
+}
+.detail-check-theater{
+    border-radius: 100px;
+    border: 1px solid black;
+    width: 80px;
+    height: 80px;
+    margin-top:10px;
+    text-align: center;
+}
+.detail-text{
+   	color: black;
+    border-radius: 100px;
+    width: 80px;
+    height: 80px;
+    opacity: 0.8;
+	float: left;
+	background-size: 100%;
+    text-align: center;
+    justify-content: center;
+    font-size: medium;
+    font-weight: 700;
+}
+p>.detail-check{
+    float: center;
+    border: 1px solid #dae2f5;
+    background-image: url(/resources/images/btn/delet.png);
+    background-size: 100%;
+    background-color: gray;
+    color: black;
+
+}
+.detail-check{
+    background-image: url(/resources/images/bg/bg-empty-cell-circle.png);
+    opacity: 0.5;
+    border: 1px solid white;
+    background-size: 100%;
+    width: 80px;
+    height: 80px;
+}
+.pre-time-button{
+    overflow: hidden;
+    background-image: url(/resources/images/btn/pre-arro.png);
+    background-size: 100%;
+    opacity: 0.4;
+    width: 10px;
+    height: 15px;
+    opacity: 0.4;
+    border: 1px solid white;
+}
+.next-time-button{
+    background-image: url(./asset/next-arro.png);
+    background-size: 100%;
+    opacity: 0.4;
+    width: 10px;
+    height: 15px;
+    border: 1px solid white;
+
+}
+.time-check-button{
+    font-size: 20px;
+    font: gray;
+    border: 1px solid white;
+    background: white;
+    width: 40px;
+    height: 30px;
+    
+}
+.time-check{
+    border-top: 1px solid rgb(207, 204, 204);
+    border-bottom: 1px solid rgb(207, 204, 204);
+    margin: 10px;
+}
+.movie-check{
+    overflow: auto;
+    height: 430px;
+}
+.btn-on{
+    width: 490px;
+    height: 30%;
+    border: 1px solid white;
+    background: white;
+    border-bottom: 1px solid rgb(201, 201, 201);
+    display: block;
+}
+.movie-check::-webkit-scrollbar {
+    width: 10px;
+  }
+.movie-check::-webkit-scrollbar-thumb {
+    background-color: #2f3542;
+    border-radius: 10px;
+  }
+.movie-check::-webkit-scrollbar-track {
+    background-color: rgb(218, 216, 216);
+    border-radius: 10px;
+    box-shadow: inset 0px 0px 5px white;
+}
+.legend{
+    width: 40px;
+}
+.time{
+    float: left;
+    width: 10%;
+    display: inline-block;
+}
+.title{
+    float: center;
+    width: 32%;
+    text-align: left;
+}
+em{
+    font-style: normal;
+    font-size: smaller;
+    color: gray;
+    display: inline-block;
+}
+strong{
+    font-size: medium;
+    font-style: normal;
+}
+.info{
+    float: right;
+    text-align: right;
+}
+.theater{
+    height: 90%;
+    width: 90%;
+    float: right;
+}
+.seat{
+    height: 10%;
+    width: 50px;
+    border: 1px solid black;
+}
+.now{
+    font-style: normal;
+    font-size: smaller;
+    color: rgb(101, 139, 243);
+}
+
+.advertise-footer{
+    width: 800px;
+    float: left;
+    margin-left: 10%;
+}

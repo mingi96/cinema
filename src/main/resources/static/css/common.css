@@ -1,0 +1,85 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+
+.nav-tabs .nav-link.active {
+	border-color: #503396 #503396 #fff;
+}
+
+.nav-tabs {
+	border-bottom: 1px solid #503396;
+}
+
+.btn-primary {
+	background-color: #503396;
+	border-color: #503396;
+	box-shadow: none;
+}
+
+#navbar-top {
+	font-family: 'Nanum Gothic', sans-serif;
+}
+
+.btn-primary:disabled,
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary:visited,
+.btn-primary:active:focus,
+.btn-primary:active:hover {
+	background-color: #351f67;
+	border-color: #351f67;
+}
+
+.btn-primary:disabled {
+	color: #444444;
+	background-color: #d1d1d1;
+	border-color: #d1d1d1;
+}
+
+.modal-header {
+	font-family: 'Noto Sans KR';
+	font-weight: 500px;
+	color: white;
+	background-color: #503396;
+	height: 50px;
+}
+
+.modal-body {
+	font-family: "Nanum Gothic";
+}
+
+.link-secondary {
+	text-decoration: none;
+}
+
+.link-secondary:hover {
+	text-decoration: underline;
+}
+
+.container-a {
+	margin-left: 130px;
+}
+
+.divide-a-tag {
+	display: inline-block;
+	height: 15px;
+	border-left: 1px solid #d1d5dd;
+}
+
+/* footer */
+.footer p, a {
+	font-family: 'Nanum Gothic', sans-serif;
+	color: black;
+}
+
+.footer div {
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.bg-light img {
+	width: 250px;
+	float: left;
+	margin-right: 20px;
+}

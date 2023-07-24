@@ -16,8 +16,13 @@ public class FileService {
 	public String uploadFile(String uploadPath, String originalFileName, byte[] fileData) throws Exception {
 		UUID uuid = UUID.randomUUID(); // 중복되지 않은 랜덤한 파일이름 생성
 
+		// 이미지1.jpg -> 이미지의 확장자 명을 구한다..
 		String extension = originalFileName.substring(originalFileName.lastIndexOf(".")); // 확장자명
+		
+		// 파일이름 생성 -> ERSFHG4FDGD454.jpg
 		String savedFileName = uuid.toString() + extension; // 파일이름 생성
+		
+		// C:/shop/item/ERSFHG4FDGD454.jpg
 		String fileUploadFullUrl = uploadPath + "/" + savedFileName;
 
 		// 생성자에 파일이 저장될 위치와 파일의 이름을 같이 넘겨 출력스트림을 만든다.

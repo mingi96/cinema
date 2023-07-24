@@ -4,11 +4,11 @@
 	th:fragment="header">
 	<div class="container">
 		<nav class="navbar">
-			<a class="navbar-brand" href="./"> <span class="logo-element">
+			<a class="navbar-brand" href="/"> <span class="logo-element">
 					<span class="logo-tape"> <span
 						class="svg-content svg-fill-theme"
 						data-svg="/images/svg/logo-part.svg"></span>
-				</span> <span class="logo-text text-uppercase"> <span>M</span>ovie
+				</span> <span class="logo-text text-uppercase"> <span style="color: black;">M</span>ovie
 				</span>
 			</span>
 			</a>
@@ -106,9 +106,9 @@
 				<div class="navbar-extra">
 					<a class="btn-theme btn" href="/members/logout"
 						sec:authorize="isAuthenticated()"><i class="fas fa-ticket-alt"></i>&nbsp;&nbsp;로그아웃
-					</a> <a class="btn-theme btn" href="members/login"
+					</a> <a class="btn-theme btn" href="/members/login"
 						sec:authorize="isAnonymous()">로그인</a> <a class="btn-theme btn"
-						href="members/new">회원가입</a>
+						href="/members/new">회원가입</a>
 				</div>
 			</div>
 		</nav>

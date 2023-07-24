@@ -74,12 +74,12 @@ public class MovieService {
 		Movie movie = movieRepository.findById(movieId).orElseThrow(EntityNotFoundException::new);
 
 		// Movie 엔티티 객체 -> dto로 변환
-		MovieFormDto movieForDto = MovieFormDto.of(movie);
+		MovieFormDto movieFormDto = MovieFormDto.of(movie);
 
 		// 3.MovieFormDto에 이미지 정보(movieImgDtoList)를 넣어준다.
-		movieForDto.setMovieImgDtoList(movieImgDtoList);
+		movieFormDto.setMovieImgDtoList(movieImgDtoList);
 
-		return movieForDto;
+		return movieFormDto;
 
 	}
 
@@ -114,8 +114,8 @@ public class MovieService {
 
 	}
 
-//	@Transactional(readOnly = true)
-//	public List<MovieRankDto> getMovieRankList() {
-//		return movieRepository.getMovieRankList();
-//	}
+	@Transactional(readOnly = true)
+	public List<MovieRankDto> getMovieRankList() {
+		return movieRepository.getMovieRankList();
+	}
 }
