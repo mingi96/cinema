@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.cinema.dto.ReservationDto;
 import com.cinema.dto.ReservationHistDto;
+import com.cinema.dto.ReservationMovieDto;
 import com.cinema.service.ReservationService;
 
 import jakarta.validation.Valid;
@@ -37,6 +38,10 @@ public class ReservationController {
 			BindingResult bindingResult, Principal principal) {
 		// Principal: 로그인한 사용자의 정보를 가져올 수 있다.
 
+		for(String st : reservationDto.getSeat()) {
+			System.out.println(st + "5555");
+		}
+		
 		if (bindingResult.hasErrors()) {
 			StringBuilder sb = new StringBuilder();
 			List<FieldError> fieldErrors = bindingResult.getFieldErrors();
@@ -47,7 +52,7 @@ public class ReservationController {
 
 			return new ResponseEntity<String>(sb.toString(), HttpStatus.BAD_REQUEST);
 		}
-
+		System.out.println("222222222222");
 		String email = principal.getName(); // id에 해당하는 정보를 가지고 온다(email)
 		Long reservationId;
 

@@ -1781,31 +1781,40 @@ $(document).ready(function () {
       },
       callOnSeatSelect: function (_event, _data, _selected, _element) {
         //console.log(_event);
-        console.log(_data);
+        //console.log(_data);
         //console.log(_selected);
       },
       selectionDone: function (_array) {
-        console.log(_array);
+        console.log(_array.selected[1].seatNumber);
+        //var _array = JSON.stringify(_array.selected[1]);
+        var seatNumber = _array.selected[1].seatNumber;
+        var PhyRowId = _array.selected[1].PhyRowId;
+        var selected = [];
         
+        $('.current-selected').each(function(i){//체크된 리스트 저장
+                    selected.push($(this).val());
+                });
+        
+		var results = JSON.stringify(seatNumber);
         //ajax로 insert 
-        function reservation() {
 			var token = $("meta[name='_csrf']").attr("content");
 			var header = $("meta[name='_csrf_header']").attr("content");
-
+			
 			var url = "/reservation";
-
 			//controller(서버)에 전달할 데이터
 			var paramData = {
 				movieId : $("#movieId").val(), //item의 id
-				count : $("#moviePrice").val(),
+				count : $("#movieCount").val(),
+				seat : selected
+				
 				
 			//수량
 			}
-
+				console.log(paramData);
 			//★전달하기 전에 데이터를 반드시 JSON -> 문자열로 만들어야 한다.
 
 			var param = JSON.stringify(paramData);
-
+			
 			$.ajax({
 				url : url, //request URL
 				type : "POST", //전송방식
@@ -1830,7 +1839,6 @@ $(document).ready(function () {
 					}
 				}
 			});
-		}
       },
       cancel: function () {
         return false;
@@ -1842,4 +1850,5 @@ $(document).ready(function () {
   $(".call-load-function").click(function () {
     loadGrid();
   });
+  
 });

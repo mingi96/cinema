@@ -73,7 +73,7 @@ body {
 							class="btn btn-light border border-primary btn-lg">장바구니
 							담기</button>
 						<button type="button" class="btn btn-primary btn-lg"
-							onclick="order()">주문하기</button>
+							onclick="reservation()">주문하기</button>
 					</p>
 					<p th:unless="${#strings.equals(movie.movieSellStatus, 'SELL')}">해당
 						상품은 현재 품절입니다.</p>
@@ -86,7 +86,7 @@ body {
 
 
 	<input type="text" class="nuberOfSeat" placeholder="Number of seats"
-		value="" id="moviePrice" />
+		value="" id="movieCount" />
 	<button class="call-load-function" id="totalPrice"
 		onclick="calculateTotalPrice()">Load</button>
 
@@ -109,9 +109,9 @@ body {
 		});
 
 		function calculateTotalPrice() {
-			var moviePrice = $("#moviePrice").val(); //수량
+			var movieCount = $("#movieCount").val(); //수량
 			var price = $("#price").val(); //가격
-			var totalPrice = (price * moviePrice).toLocaleString('ko-KR'); //천단위 콤마
+			var totalPrice = (price * movieCount).toLocaleString('ko-KR'); //천단위 콤마
 			$("#totalPrice").html(totalPrice + '원'); //총가격 출력
 		}
 

@@ -30,8 +30,6 @@ public class Reservation {
 
 	private LocalDateTime rs_regdate; // 생성시간
 
-	private int seatNo;
-
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "member_id")
 	private Member member;

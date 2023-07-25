@@ -1,7 +1,11 @@
 package com.cinema.dto;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.cinema.entity.ReservationMovie;
 
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,6 +18,7 @@ public class ReservationMovieDto {
 		this.count = reservationMovie.getCount();
 		this.reservationPrice = reservationMovie.getReservationPrice();
 		this.imgUrl = imgUrl;
+		this.seat = reservationMovie.getSeat();
 	}
 
 	private String movieNm; // 상품명
@@ -23,4 +28,6 @@ public class ReservationMovieDto {
 	private int reservationPrice; // 주문 금액
 
 	private String imgUrl; // 상품 이미지 경로
+
+	private List<String> seat;
 }

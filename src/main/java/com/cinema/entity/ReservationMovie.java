@@ -1,5 +1,7 @@
 package com.cinema.entity;
 
+import java.util.List;
+
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -28,13 +30,16 @@ public class ReservationMovie extends BaseEntity {
 
 	private int count; // 수량
 
+	@ElementCollection
+	private List<String> seat;
+
 	// 주문할 상품하고 주문 수량을 통해 orderItem객체를 만듬
 	public static ReservationMovie createReservationMovie(Movie movie, int count) {
 		ReservationMovie reservationMovie = new ReservationMovie();
 		reservationMovie.setMovie(movie);
 		reservationMovie.setCount(count);
 		reservationMovie.setReservationPrice(movie.getPrice());
-
+		reservationMovie.setSeat(reservationMovie.getSeat());
 
 		return reservationMovie;
 	}
@@ -42,7 +47,5 @@ public class ReservationMovie extends BaseEntity {
 	public int getTotalPrice() {
 		return reservationPrice * count;
 	}
-
-	
 
 }
