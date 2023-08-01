@@ -16,4 +16,5 @@ public class ReservationDto {
 	private int count;
 
 	private List<String> seat;
+
 }

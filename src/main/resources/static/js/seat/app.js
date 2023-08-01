@@ -1785,17 +1785,41 @@ $(document).ready(function () {
         //console.log(_selected);
       },
       selectionDone: function (_array) {
-        console.log(_array.selected[1].seatNumber);
-        //var _array = JSON.stringify(_array.selected[1]);
-        var seatNumber = _array.selected[1].seatNumber;
-        var PhyRowId = _array.selected[1].PhyRowId;
-        var selected = [];
+        /*console.log(_array.selected[1].seatNumber);*/
         
-        $('.current-selected').each(function(i){//체크된 리스트 저장
+        var phyRowId = []; //시트 열(알파벳)
+        var seatNumber = []; //시트 행(숫자)
+        var seatInfo = []; //시트 행열(알파벳 + 숫자)
+       /* var selected = []; */
+        
+        for(i = 0; i < _array.selected.length; i++) {
+			var gridSeatNum = _array.selected[i].GridSeatNum;
+			
+			seatNumber.push(gridSeatNum);
+			
+			var rowId = _array.selected[i].PhyRowId;
+			
+			phyRowId.push(rowId);
+			
+			/*console.log(phyRowId[i] + seatNumber[i]);*/
+			
+        
+        seatInfo.push(phyRowId[i] + seatNumber[i]);
+        
+		}
+		
+        console.log(seatInfo);
+        
+		
+        
+       /* $('.current-selected').each(function(i){//체크된 리스트 저장
                     selected.push($(this).val());
-                });
+                });*/
         
-		var results = JSON.stringify(seatNumber);
+		/*var seatInfo = JSON.stringify(seatInfo);*/
+		
+		 console.log(seatInfo);
+		
         //ajax로 insert 
 			var token = $("meta[name='_csrf']").attr("content");
 			var header = $("meta[name='_csrf_header']").attr("content");
@@ -1805,12 +1829,14 @@ $(document).ready(function () {
 			var paramData = {
 				movieId : $("#movieId").val(), //item의 id
 				count : $("#movieCount").val(),
-				seat : selected
+				seat : seatInfo
 				
 				
 			//수량
 			}
-				console.log(paramData);
+			
+			
+				/*console.log(paramData);*/
 			//★전달하기 전에 데이터를 반드시 JSON -> 문자열로 만들어야 한다.
 
 			var param = JSON.stringify(paramData);

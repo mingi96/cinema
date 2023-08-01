@@ -12,7 +12,7 @@ import com.cinema.entity.Reservation;
 public interface ReservationRepository extends JpaRepository<Reservation, Long> {
 	// 현재 로그인한 사용자의 주문 데이터를 페이징 조건에 맞춰서 조회
 	@Query("select o from Reservation o where o.member.email = :email order by o.reservationDate desc")
-	List<Reservation> findReservations(@Param("email") String email, Pageable pageable);
+	List<Reservation> findReservations(@Param("email") String email);
 
 	// 현재 로그인한 회원의 주문 개수가 몇개인지 조회
 	@Query("select count(o) from Reservation o where o.member.email = :email")

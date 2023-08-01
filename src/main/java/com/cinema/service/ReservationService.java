@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.thymeleaf.util.StringUtils;
 
+import com.cinema.dto.MovieFormDto;
+import com.cinema.dto.MovieImgDto;
 import com.cinema.dto.ReservationDto;
 import com.cinema.dto.ReservationHistDto;
 import com.cinema.dto.ReservationMovieDto;
@@ -46,11 +48,14 @@ public class ReservationService {
 
 		// 3. 주문할 상품 엔티티와 주문 수량을 이용하여 주문 상품 엔티티를 생성
 		List<ReservationMovie> reservationMovieList = new ArrayList<>();
-		ReservationMovie reservationMovie = ReservationMovie.createReservationMovie(movie, reservationDto.getCount());
-		reservationMovieList.add(reservationMovie);
+		ReservationMovie reservationMovie = ReservationMovie.createReservationMovie(movie, reservationDto.getCount(),
+				reservationDto.getSeat());
 
+		reservationMovieList.add(reservationMovie);
+		reservationMovieList.get(0).getSeat();
 		// 4. 회원 정보와 주문할 상품 리스트 정보를 이용하여 주문 엔티티를 생성
 		Reservation reservation = Reservation.createReservation(member, reservationMovieList);
+
 		reservationRepository.save(reservation); // insert
 
 		return reservation.getId();
@@ -58,12 +63,9 @@ public class ReservationService {
 
 	// 주문 목록을 가져오는 서비스
 	@Transactional(readOnly = true)
-	public Page<ReservationHistDto> getReservationList(String email, Pageable pageable) {
+	public List<ReservationHistDto> getReservationList(String email) {
 		// 1. 유저 아이디와 페이징 조건을 이용하여 주문 목록을 조회
-		List<Reservation> reservations = reservationRepository.findReservations(email, pageable);
-
-		// 2. 유저의 주문 총 개수를 구한다
-		Long totalCount = reservationRepository.countReservation(email);
+		List<Reservation> reservations = reservationRepository.findReservations(email);
 
 		List<ReservationHistDto> reservationHistDtos = new ArrayList<>();
 
@@ -85,7 +87,7 @@ public class ReservationService {
 		}
 
 		// 4. 페이지 구현 객체를 생성하여 return
-		return new PageImpl<>(reservationHistDtos, pageable, totalCount);
+		return reservationHistDtos;
 	}
 
 	// 본인확인(현재 로그인한 사용자와 주문데이터를 생성한 사용자가 같은지 검사)
@@ -104,6 +106,25 @@ public class ReservationService {
 		}
 
 		return true;
+	}
+
+	// 예매정보 가져오기
+	@Transactional(readOnly = true) // 트랙잰션 읽기 전용(변경감지 수해하지 않음) ->성능 향상
+	public ReservationHistDto getReservationHistDtl(Long reservationId, String email) {
+
+		List<Reservation> reservations = reservationRepository.findReservations(email);
+
+		// 2.movie테이블에 있는데이터를 가져온다.
+		Reservation reservation = reservationRepository.findById(reservationId)
+				.orElseThrow(EntityNotFoundException::new);
+
+		// Movie 엔티티 객체 -> dto로 변환
+		ReservationHistDto reservationHistDto = ReservationHistDto.of(reservation);
+
+		// 3.MovieFormDto에 이미지 정보(movieImgDtoList)를 넣어준다.
+
+		return reservationHistDto;
+
 	}
 
 	// 주문 삭제

@@ -30,4 +30,5 @@ public class ReservationMovieDto {
 	private String imgUrl; // 상품 이미지 경로
 
 	private List<String> seat;
+
 }

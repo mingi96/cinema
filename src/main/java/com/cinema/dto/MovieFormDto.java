@@ -44,7 +44,9 @@ public class MovieFormDto {
 	private LocalDateTime mvRegdate;
 
 	private MovieSellStatus movieSellStatus;
-
+	
+	private List<ReservationDto> seat;
+	
 	// 영화 이미지 정보를 저장
 	private List<MovieImgDto> movieImgDtoList = new ArrayList<>();
 

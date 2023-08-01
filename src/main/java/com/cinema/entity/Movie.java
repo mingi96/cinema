@@ -44,7 +44,7 @@ public class Movie extends BaseEntity {
 	@Column(nullable = false, length = 100) // not null여부, 컬럼 크기지정
 	private String movieActors; // 배우들 -> movie_actors
 
-	@Column(nullable = false, length = 50) // not null여부, 컬럼 크기지정
+	@Column(nullable = false, length = 100) // not null여부, 컬럼 크기지정
 	private String genre; // 장르 -> genre
 
 	@Column(nullable = false, length = 50) // not null여부, 컬럼 크기지정

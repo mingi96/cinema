@@ -52,6 +52,7 @@ public class Reservation {
 		reservation.setMember(member);
 
 		for (ReservationMovie reservationMovie : reservationMovieList) {
+		
 			reservation.addReservationMovie(reservationMovie);
 		}
 
