@@ -18,7 +18,6 @@ public class ReservationMovieDto {
 		this.count = reservationMovie.getCount();
 		this.reservationPrice = reservationMovie.getReservationPrice();
 		this.imgUrl = imgUrl;
-		this.seat = reservationMovie.getSeat();
 	}
 
 	private String movieNm; // 상품명

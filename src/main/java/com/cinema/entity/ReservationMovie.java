@@ -31,7 +31,7 @@ public class ReservationMovie extends BaseEntity {
 
 	private int count; // 수량
 
-	private List<String> seat;
+	private String seat;
 
 	// 주문할 상품하고 주문 수량을 통해 orderItem객체를 만듬
 	public static ReservationMovie createReservationMovie(Movie movie, int count, List<String> seat) {
@@ -39,7 +39,23 @@ public class ReservationMovie extends BaseEntity {
 		reservationMovie.setMovie(movie);
 		reservationMovie.setCount(count);
 		reservationMovie.setReservationPrice(movie.getPrice());
-		reservationMovie.setSeat(seat);
+		
+		String totalSeat = null;
+		
+		List<String> seatList = seat;
+		
+		int size = 0;
+		
+		for(String seats : seatList) {
+			if(size == 0) {
+				totalSeat = seats;
+			}else {
+				totalSeat += ", " + seats;
+			}
+			++size;
+		}
+		reservationMovie.setSeat(totalSeat);
+		
 		System.out.println(seat + "dkdkdkdkdkdkdk");
 
 		return reservationMovie;

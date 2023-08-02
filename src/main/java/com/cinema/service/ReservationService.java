@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.thymeleaf.util.StringUtils;
@@ -23,6 +24,7 @@ import com.cinema.entity.ReservationMovie;
 import com.cinema.repository.MemberRepository;
 import com.cinema.repository.MovieImgRepository;
 import com.cinema.repository.MovieRepository;
+import com.cinema.repository.ReservationMovieRepository;
 import com.cinema.repository.ReservationRepository;
 
 import jakarta.persistence.EntityNotFoundException;
@@ -35,6 +37,7 @@ public class ReservationService {
 	private final MovieRepository movieRepository;
 	private final MemberRepository memberRepository;
 	private final ReservationRepository reservationRepository;
+	private final ReservationMovieRepository reservationMovieRepository;
 	private final MovieImgRepository movieImgRepository;
 
 	// 주문하기
@@ -69,23 +72,30 @@ public class ReservationService {
 
 		List<ReservationHistDto> reservationHistDtos = new ArrayList<>();
 
+		// 목표 : member_id
+		// 1. email을 가지고 DB에있는 Member를 찾아와
+		Member member = memberRepository.findByEmail(email);
+
+		// 2. 찾아온 member.id를 넣고
+		List<ReservationMovie> reservationMovies = reservationMovieRepository.getReservationMovieList(member.getId());
+
+		// DB에 있는
 		// 3. 주문 리스트를 순회하면서 구매 이력 페이지에 전달할 DTO(OrderHistDto)를 생성
 		for (Reservation reservation : reservations) {
-			ReservationHistDto reservationHistDto = new ReservationHistDto(reservation);
-			List<ReservationMovie> reservationMovies = reservation.getReservationMovies();
-
+//			List<ReservationMovie> reservationMovies = reservation.getReservationMovies();
 			for (ReservationMovie reservationMovie : reservationMovies) {
+				ReservationHistDto reservationHistDto = new ReservationHistDto(reservation, reservationMovie);
+
 				// 상품의 대표이미지 가져오기
 				MovieImg movieImg = movieImgRepository.findByMovieIdAndRepimgYn(reservationMovie.getMovie().getId(),
 						"Y");
 				ReservationMovieDto reservationMovieDto = new ReservationMovieDto(reservationMovie,
 						movieImg.getImgUrl());
 				reservationHistDto.addReservationMovieDto(reservationMovieDto);
+
+				reservationHistDtos.add(reservationHistDto);
 			}
-
-			reservationHistDtos.add(reservationHistDto);
 		}
-
 		// 4. 페이지 구현 객체를 생성하여 return
 		return reservationHistDtos;
 	}
@@ -137,4 +147,15 @@ public class ReservationService {
 		// delete
 		reservationRepository.delete(reservation);
 	}
+	
+	//예매한 영화의 정보를 가져온다
+	public ReservationMovie reserveMovieinFo(Long id) {
+		return reservationMovieRepository.reserveMovieinFo(id);
+	}
+	
+	
+	public Reservation getMovie(Long id) {
+		return reservationRepository.reserveMovieinFo(id);
+	}
+	
 }

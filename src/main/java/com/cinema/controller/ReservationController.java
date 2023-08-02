@@ -24,6 +24,8 @@ import com.cinema.dto.MovieFormDto;
 import com.cinema.dto.ReservationDto;
 import com.cinema.dto.ReservationHistDto;
 import com.cinema.dto.ReservationMovieDto;
+import com.cinema.entity.Reservation;
+import com.cinema.entity.ReservationMovie;
 import com.cinema.service.ReservationService;
 
 import jakarta.validation.Valid;
@@ -105,7 +107,16 @@ public class ReservationController {
 
 		List<ReservationHistDto> reservationHistDtoList = reservationService.getReservationList(principal.getName());
 
+		ReservationMovie reserveMovie = reservationService.reserveMovieinFo(reservationId);
+		System.out.println(reserveMovie.getMovie().getMovieNm());
+		Reservation reserve = reservationService.getMovie(reservationId);
+
+		System.out.println(reserveMovie.getReservationPrice());
+
 		// 3. 서비스에서 가져온 값들을 view단에 model을 이용해 전송
+		model.addAttribute("reserve", reserve);
+		model.addAttribute("reserveMovie", reserveMovie);
+		model.addAttribute("reservations", reservationHistDtoList);
 		model.addAttribute("reservations", reservationHistDtoList);
 
 		return "reservation/reservationSuccess";

@@ -16,6 +16,7 @@ import com.cinema.dto.MovieRankDto;
 import com.cinema.dto.MovieSearchDto;
 import com.cinema.entity.Movie;
 import com.cinema.entity.MovieImg;
+import com.cinema.entity.Reservation;
 import com.cinema.repository.MovieImgRepository;
 import com.cinema.repository.MovieRepository;
 
@@ -118,4 +119,10 @@ public class MovieService {
 	public List<MovieRankDto> getMovieRankList() {
 		return movieRepository.getMovieRankList();
 	}
+	
+	
+	
+
+	
+	
 }

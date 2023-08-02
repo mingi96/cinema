@@ -23,7 +23,7 @@ public class Reservation {
 
 	private LocalDateTime reservationDate; // 예매날짜
 
-	private LocalDateTime reservationTime; // 상영시간
+	private String reservationTime; // 상영시간
 
 	@Enumerated(EnumType.STRING)
 	private ReservationStatus reservationStatus; // 주문상태
@@ -38,7 +38,6 @@ public class Reservation {
 	// 다만 orderItem은 자식 테이블이 되므로 List로 만든다.
 	// 연관관계의 주인 설정(외래키 지정)
 	@OneToMany(mappedBy = "reservation", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
-
 	private List<ReservationMovie> reservationMovies = new ArrayList<>();
 
 	public void addReservationMovie(ReservationMovie reservationMovie) {
