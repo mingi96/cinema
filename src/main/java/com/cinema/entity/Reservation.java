@@ -71,14 +71,14 @@ public class Reservation {
 		return totalPrice;
 	}
 
-//	// 주문 취소
-//	public void cancelReservation() {
-//		this.reservationStatus = ReservationStatus.CANCEL;
-//
-//		// 재고를 원래대로 돌려 놓는다.
-//		for (ReservationMovie reservationMovie : reservationMovies) {
-//			reservationMovie.cancel();
-//		}
-//	}
+	// 주문 취소
+	public void cancelReservation() {
+		this.reservationStatus = ReservationStatus.CANCEL;
+
+		// 재고를 원래대로 돌려 놓는다.
+		for (ReservationMovie reservationMovie : reservationMovies) {
+			reservationMovie.cancel();
+		}
+	}
 
 }

@@ -52,7 +52,7 @@ public class ReservationService {
 		// 3. 주문할 상품 엔티티와 주문 수량을 이용하여 주문 상품 엔티티를 생성
 		List<ReservationMovie> reservationMovieList = new ArrayList<>();
 		ReservationMovie reservationMovie = ReservationMovie.createReservationMovie(movie, reservationDto.getCount(),
-				reservationDto.getSeat());
+				reservationDto.getSeat(), reservationDto.getDatePicker(), reservationDto.getSelectTime());
 
 		reservationMovieList.add(reservationMovie);
 		reservationMovieList.get(0).getSeat();
@@ -137,6 +137,14 @@ public class ReservationService {
 
 	}
 
+	// 주문 취소
+	public void cancelReservation(Long reservationId) {
+		Reservation reservation = reservationRepository.findById(reservationId)
+				.orElseThrow(EntityNotFoundException::new);
+		// OrderStatus를 update -> entity의 필드 값을 바꿔주면 된다.
+		reservation.cancelReservation();
+	}
+
 	// 주문 삭제
 	public void deleteReservation(Long reservationId) {
 		// ★delete하기 전에 select를 한번 해준다
@@ -147,15 +155,14 @@ public class ReservationService {
 		// delete
 		reservationRepository.delete(reservation);
 	}
-	
-	//예매한 영화의 정보를 가져온다
+
+	// 예매한 영화의 정보를 가져온다
 	public ReservationMovie reserveMovieinFo(Long id) {
 		return reservationMovieRepository.reserveMovieinFo(id);
 	}
-	
-	
+
 	public Reservation getMovie(Long id) {
 		return reservationRepository.reserveMovieinFo(id);
 	}
-	
+
 }

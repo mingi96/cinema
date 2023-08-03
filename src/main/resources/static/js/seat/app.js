@@ -1829,7 +1829,10 @@ $(document).ready(function () {
 			var paramData = {
 				movieId : $("#movieId").val(), //item의 id
 				count : $("#movieCount").val(),
-				"seat" : seatInfo
+				"seat" : seatInfo,
+				datePicker : $("#datePicker").val(),
+				selectTime : $("#selectTime").val()
+				
 				
 				
 			//수량

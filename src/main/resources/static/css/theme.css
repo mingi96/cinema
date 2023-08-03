@@ -2672,7 +2672,7 @@ a.paginator-item:hover {
 .entity-list-title {
 	font-weight: 600;
 	color: #333;
-	float: left;
+	/* float: left; */
 	margin-right: 0.5rem;
 }
 

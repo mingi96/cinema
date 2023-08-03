@@ -39,6 +39,8 @@ public class MovieController {
 	@GetMapping(value = "/movie/{movieId}")
 	public String movieDtl(Model model, @PathVariable("movieId") Long movieId) {
 		MovieFormDto movieFormDto = movieService.getMovieDtl(movieId);
+		System.out.println(movieFormDto.getMovieImgDtoList().get(1).getImgUrl());
+		
 		model.addAttribute("movie", movieFormDto);
 		return "movie/movieDtl";
 	}

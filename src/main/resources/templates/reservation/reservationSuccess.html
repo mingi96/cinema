@@ -19,20 +19,20 @@
 						<div class="section-line">
 							<div class="movie-info-entity">
 								<div class="entity-poster" data-role="hover-wrap">
-									<th:block>
-										<div class="embed-responsive embed-responsive-poster">
-											<img class="embed-responsive-item" src="" alt="" />
-										</div>
-									</th:block>
-									<div class="d-over bg-theme-lighted collapse animated faster"
-										data-show-class="fadeIn show" data-hide-class="fadeOut show">
-										<div class="entity-play">
-											<a
-												class="action-icon-theme action-icon-bordered rounded-circle"
-												href="https://www.youtube.com/watch?v=d96cjJhvlMA"
-												data-magnific-popup="iframe"> <span class="icon-content"><i
-													class="fas fa-play"></i></span>
-											</a>
+									<div class="embed-responsive embed-responsive-poster">
+										<img class="embed-responsive-item"
+											th:src="${movieImg.getImgUrl()}" alt="" />
+
+										<div class="d-over bg-theme-lighted collapse animated faster"
+											data-show-class="fadeIn show" data-hide-class="fadeOut show">
+											<div class="entity-play">
+												<a
+													class="action-icon-theme action-icon-bordered rounded-circle"
+													href="https://www.youtube.com/watch?v=d96cjJhvlMA"
+													data-magnific-popup="iframe"> <span
+													class="icon-content"><i class="fas fa-play"></i></span>
+												</a>
+											</div>
 										</div>
 									</div>
 								</div>
@@ -56,8 +56,8 @@
 										</div>
 									</div>
 									<ul class="entity-list">
-										<li><span class="entity-list-title">예매번호:</span>July 21,
-											2014 (Dolby Theatre), August 1, 2014 (United States)</li>
+										<li><span class="entity-list-title"
+											th:text="|예매번호: ${reserveMovie.getId()}|">예매번호:</span></li>
 										<li><span class="entity-list-title"
 											th:text="|좌석: ${reserveMovie.seat}|"></span> <a
 											class="content-link" href="#"></a></li>
@@ -72,7 +72,12 @@
 										<li><span class="entity-list-title">상영 시간:</span> <a
 											class="content-link" href="#"></a></li>
 										<li><span class="entity-list-title">국가:</span>english</li>
-										<li><a class="btn-theme btn" href="">예매하기</a></li>
+
+										<th:block>
+											<li><button class="btn-theme btn"
+													th:value="${reservationId}"
+													onclick="deleteReservation(this.value)">예매취소</button></li>
+										</th:block>
 									</ul>
 								</div>
 							</div>
@@ -83,4 +88,46 @@
 		</th:block>
 	</div>
 </div>
+
+<!-- 각 페이지의 스크립트가 작성될 위치 -->
+<th:block layout:fragment="script">
+	<script th:inline="javascript">
+		function deleteReservation(reservationId) {
+			const deleteConf = confirm("삭제하시겠습니까?");
+
+			if (!deleteConf)
+				return; //취소버튼 누르면
+
+			var token = $("meta[name='_csrf']").attr("content");
+			var header = $("meta[name='_csrf_header']").attr("content");
+
+			//request URL
+			var url = "/reservation/" + reservationId + "/delete";
+
+			$.ajax({
+				url : url, //request URL
+				type : "DELETE", //전송방식
+				contentType : "application/json",
+				beforeSend : function(xhr) {
+					//데이터를 전송하기 전에 헤더에 csrf 값을 설정
+					xhr.setRequestHeader(header, token);
+				},
+				dataType : "json",
+				cache : false,
+				success : function(result, status) {
+					//주문취소 후에 해당 페이지로 이동시켜준다.
+					location.href = '/';
+				},
+				error : function(jqXHR, status, error) {
+					if (jqXHR.status == '401') {
+						alert('로그인 후 이용해주세요.');
+						location.href = '/members/login';
+					} else {
+						alert(jqXHR.responseText);
+					}
+				}
+			});
+		}
+	</script>
+</th:block>
 </html>

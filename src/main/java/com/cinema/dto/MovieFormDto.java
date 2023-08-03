@@ -1,5 +1,6 @@
 package com.cinema.dto;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -36,7 +37,7 @@ public class MovieFormDto {
 	@NotBlank(message = "상영시간은 필수 입력입니다.")
 	private String mvRuntime;
 
-	private LocalDateTime mvPeriodS;
+	private LocalDate mvPeriodS;
 
 	@NotBlank(message = "줄거리는 필수 입력입니다.")
 	private String movieDetail;

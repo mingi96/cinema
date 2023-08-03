@@ -1,5 +1,6 @@
 package com.cinema.dto;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import jakarta.validation.constraints.*;
@@ -16,5 +17,10 @@ public class ReservationDto {
 	private int count;
 
 	private List<String> seat;
+
+	@NotNull(message = "예매날짜를 선택하세요")
+	private LocalDate datePicker;
+
+	private String selectTime;
 
 }

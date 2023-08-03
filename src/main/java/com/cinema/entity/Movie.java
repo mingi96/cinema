@@ -1,5 +1,6 @@
 package com.cinema.entity;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import com.cinema.constant.MovieSellStatus;
@@ -50,7 +51,7 @@ public class Movie extends BaseEntity {
 	@Column(nullable = false, length = 50) // not null여부, 컬럼 크기지정
 	private String mvRuntime; // 런타임 -> mv_runtime
 
-	private LocalDateTime mvPeriodS; // 개봉일
+	private LocalDate mvPeriodS; // 개봉일
 
 	@Lob // clob과 같은 큰타입의 문자타입으로 컬럼을 만든다
 	@Column(nullable = false, length = 1000)
@@ -76,6 +77,9 @@ public class Movie extends BaseEntity {
 
 	}
 
-	
+	// 재고 증가
+	public void addStock(int stockNumber) {
+		this.stockNumber += stockNumber;
+	}
 
 }

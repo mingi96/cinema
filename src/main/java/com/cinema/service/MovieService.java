@@ -120,6 +120,10 @@ public class MovieService {
 		return movieRepository.getMovieRankList();
 	}
 	
+	public MovieImg getdeImg(Long id) {
+		return movieImgRepository.reserveMovieimg(id);
+	}
+	
 	
 	
 

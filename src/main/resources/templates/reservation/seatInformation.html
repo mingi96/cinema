@@ -68,28 +68,43 @@ body {
 							<strong id="totalPrice" class="text-primary h4"></strong>
 						</div>
 					</div>
-					<p th:if="${#strings.equals(movie.movieSellStatus, 'SELL')}">
-						<button type="button"
-							class="btn btn-light border border-primary btn-lg">장바구니
-							담기</button>
-						<button type="button" class="btn btn-primary btn-lg"
-							onclick="reservation()">주문하기</button>
-					</p>
-					<p th:unless="${#strings.equals(movie.movieSellStatus, 'SELL')}">해당
-						상품은 현재 품절입니다.</p>
+
+					<div class="form-group row">
+						<div class="col-md-12">
+							<label class="text-black">상영날짜</label> <input type="date"
+								id="datePicker">
+						</div>
+					</div>
+					<select class="form-select" aria-label="Default select example"
+						id="selectTime">
+						<option selected>시간 선택</option>
+						<option value="09:00">09:00</option>
+						<option value="11:00">11:00</option>
+						<option value="13:00">13:00</option>
+						<option value="15:00">15:00</option>
+						<option value="17:00">17:00</option>
+						<option value="19:00">19:00</option>
+						<option value="21:00">21:00</option>
+						<option value="23:00">23:00</option>
+					</select> <input type="text" class="nuberOfSeat"
+						placeholder="Number of seats" value="" id="movieCount" />
+
+					<button class="call-load-function" id="totalPrice"
+						onclick="calculateTotalPrice()">선택</button>
+
+
+
 
 				</div>
+
+
 			</div>
-			
+
 		</div>
 	</div>
 
 
 
-	<input type="text" class="nuberOfSeat" placeholder="Number of seats"
-		value="" id="movieCount" />
-	<button class="call-load-function" id="totalPrice"
-		onclick="calculateTotalPrice()">Load</button>
 
 	<div class="selectMove"></div>
 </div>
@@ -102,10 +117,10 @@ body {
 	<script th:inline="javascript">
 		$(document).ready(function() {
 			calculateTotalPrice();
-			
-/* 			$('.seat-selection').click(function(){
-				$(this).attr("name")
-			}); */
+
+			/* 			$('.seat-selection').click(function(){
+			 $(this).attr("name")
+			 }); */
 
 		});
 
@@ -115,8 +130,6 @@ body {
 			var totalPrice = (price * movieCount).toLocaleString('ko-KR'); //천단위 콤마
 			$("#totalPrice").html(totalPrice + '원'); //총가격 출력
 		}
-
-		
 	</script>
 </th:block>
 </html>

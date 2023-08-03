@@ -24,8 +24,10 @@ import com.cinema.dto.MovieFormDto;
 import com.cinema.dto.ReservationDto;
 import com.cinema.dto.ReservationHistDto;
 import com.cinema.dto.ReservationMovieDto;
+import com.cinema.entity.MovieImg;
 import com.cinema.entity.Reservation;
 import com.cinema.entity.ReservationMovie;
+import com.cinema.service.MovieService;
 import com.cinema.service.ReservationService;
 
 import jakarta.validation.Valid;
@@ -35,6 +37,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class ReservationController {
 	private final ReservationService reservationService;
+	private final MovieService movieService;
 
 	@PostMapping(value = "/reservation")
 	public @ResponseBody ResponseEntity reservation(@RequestBody @Valid ReservationDto reservationDto,
@@ -82,6 +85,7 @@ public class ReservationController {
 		}
 
 		// 2. 주문취소
+		reservationService.cancelReservation(reservationId);
 
 		return new ResponseEntity<Long>(reservationId, HttpStatus.OK); // 성공했을때
 	}
@@ -106,17 +110,14 @@ public class ReservationController {
 			Model model) {
 
 		List<ReservationHistDto> reservationHistDtoList = reservationService.getReservationList(principal.getName());
-
 		ReservationMovie reserveMovie = reservationService.reserveMovieinFo(reservationId);
-		System.out.println(reserveMovie.getMovie().getMovieNm());
+		MovieImg movieImg = movieService.getdeImg(reserveMovie.getMovie().getId());
 		Reservation reserve = reservationService.getMovie(reservationId);
 
-		System.out.println(reserveMovie.getReservationPrice());
-
 		// 3. 서비스에서 가져온 값들을 view단에 model을 이용해 전송
+		model.addAttribute("movieImg", movieImg);
 		model.addAttribute("reserve", reserve);
 		model.addAttribute("reserveMovie", reserveMovie);
-		model.addAttribute("reservations", reservationHistDtoList);
 		model.addAttribute("reservations", reservationHistDtoList);
 
 		return "reservation/reservationSuccess";

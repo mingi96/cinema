@@ -32,4 +32,6 @@ public class MovieTimeTable {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "si_id")
 	private Theater theater;
+	
+	private int price;
 }
