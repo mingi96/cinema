@@ -35,7 +35,7 @@ public class MovieController {
 		return "movie/movieList";
 	}
 
-	// 상품 상세 페이지
+	// 영화 상세 페이지
 	@GetMapping(value = "/movie/{movieId}")
 	public String movieDtl(Model model, @PathVariable("movieId") Long movieId) {
 		MovieFormDto movieFormDto = movieService.getMovieDtl(movieId);
@@ -52,7 +52,7 @@ public class MovieController {
 		return "movie/movieForm";
 	}
 
-	// 상품 등록( insert)
+	// 영화 등록( insert)
 	@PostMapping(value = "/admin/movie/new")
 	public String movieNew(@Valid MovieFormDto movieFormDto, BindingResult bindingResult, Model model,
 			@RequestParam("movieImgFile") List<MultipartFile> movieImgFileList) {

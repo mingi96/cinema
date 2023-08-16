@@ -1786,6 +1786,7 @@ $(document).ready(function () {
       },
       selectionDone: function (_array) {
         /*console.log(_array.selected[1].seatNumber);*/
+        console.log(_array);
         
         var phyRowId = []; //시트 열(알파벳)
         var seatNumber = []; //시트 행(숫자)
@@ -1853,11 +1854,11 @@ $(document).ready(function () {
 					//데이터를 전송하기전에 헤더에 csrf값을 설정
 					xhr.setRequestHeader(header, token);
 				},
-				dataType : "json",
+				hrdataType : "json",
 				cache : false,
 				success : function(result, status) {
 					alert("주문이 완료 되었습니다." + result);
-					//location.href = '/';
+					location.href = '/reservationSuccess/' + result;
 				},
 				error : function(jqXHR, status, error) {
 					if (jqXHR.status == '401') {
