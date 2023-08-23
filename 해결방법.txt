@@ -1,2 +1,0 @@
-seatNumber, PhyRowId
-두 개 배열 선언하고 각 데이터에 받아서 넘기기
