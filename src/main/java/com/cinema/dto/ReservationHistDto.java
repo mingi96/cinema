@@ -25,17 +25,17 @@ public class ReservationHistDto {
 		this.seat = reservationMovie.getSeat();
 	}
 
-	private Long reservationId; // 주문아이디
+	private Long reservationId; // 예매 아이디
 
-	private String reservationDate; // 주문날짜
+	private String reservationDate; // 예매 날짜
 
-	private ReservationStatus reservationStatus; // 주문상태
+	private ReservationStatus reservationStatus; // 예매 상태
 
-	private List<ReservationMovieDto> reservationMovieDtoList = new ArrayList<>(); // 주문 상품 리스트
+	private List<ReservationMovieDto> reservationMovieDtoList = new ArrayList<>(); // 예매 상품 리스트
 
 	private String seat;
 
-	// orderItemDto객체를 주문 상품 리스트에 추가하는 메소드
+	// ReservationMovieDto 객체를 주문 상품 리스트에 추가하는 메소드
 	public void addReservationMovieDto(ReservationMovieDto reservationMovieDto) {
 		reservationMovieDtoList.add(reservationMovieDto);
 	}

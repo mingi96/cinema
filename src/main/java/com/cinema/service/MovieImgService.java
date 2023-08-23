@@ -1,5 +1,6 @@
 package com.cinema.service;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import org.thymeleaf.util.StringUtils;
@@ -16,7 +17,10 @@ import lombok.RequiredArgsConstructor;
 @Transactional
 public class MovieImgService {
 
-	private String movieImgLocation = "C:/cinema/movie";
+	@Value("${movieImgLocation}")
+	private String movieImgLocation;
+//
+//	private String movieImgLocation = "C:/cinema/movie";
 	private final MovieImgRepository movieImgRepository;
 	private final FileService fileService;
 

@@ -51,7 +51,7 @@ public class MovieFormDto {
 	// 영화 이미지 정보를 저장
 	private List<MovieImgDto> movieImgDtoList = new ArrayList<>();
 
-	// 상품 이미지 아이디들을 저장 -> 수정시에 이미지 아이디들을 담아둘 용도.
+	// 영화 이미지 아이디들을 저장 -> 수정시에 이미지 아이디들을 담아둘 용도.
 	private List<Long> movieImgIds = new ArrayList<>();
 
 	private static ModelMapper modelMapper = new ModelMapper();

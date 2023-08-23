@@ -40,7 +40,7 @@ public class MovieController {
 	public String movieDtl(Model model, @PathVariable("movieId") Long movieId) {
 		MovieFormDto movieFormDto = movieService.getMovieDtl(movieId);
 		System.out.println(movieFormDto.getMovieImgDtoList().get(1).getImgUrl());
-		
+
 		model.addAttribute("movie", movieFormDto);
 		return "movie/movieDtl";
 	}
@@ -61,7 +61,7 @@ public class MovieController {
 			return "movie/movieForm";
 		}
 
-		// 상품등록전에 첫번째 이미지가 있는지 없는지 검사(첫번쨰 이미지는 필수값)
+		// 영화 등록전에 첫번째 이미지가 있는지 없는지 검사(첫번쨰 이미지는 필수값)
 		if (movieImgFileList.get(0).isEmpty()) {
 			model.addAttribute("errorMessage", "첫번째 상품 이미지는 필수입니다.");
 			return "movie/movieForm";
@@ -79,7 +79,7 @@ public class MovieController {
 
 	}
 
-	// 영화관리 페이지
+	// 영화 관리 페이지
 	@GetMapping(value = { "/admin/movies", "/admin/movies/{page}" })
 	public String movieManage(MovieSearchDto movieSearchDto, @PathVariable("page") Optional<Integer> page,
 			Model model) {
@@ -89,12 +89,12 @@ public class MovieController {
 		Page<Movie> movies = movieService.getAdminMoviePage(movieSearchDto, pageable);
 		model.addAttribute("movies", movies);
 		model.addAttribute("movieSearchDto", movieSearchDto);
-		model.addAttribute("maxPage", 5); // 상품관리 페이지 하단에 보여줄 최대 페이지번호
+		model.addAttribute("maxPage", 5); // 영화 관리 페이지 하단에 보여줄 최대 페이지번호
 
-		return "/movie/movieMng";
+		return "movie/movieMng";
 	}
 
-	// 상품 수정페이지 보기
+	// 영화 수정페이지 보기
 	@GetMapping(value = "/admin/movie/{movieId}")
 	public String movieDtl(@PathVariable("movieId") Long movieId, Model model) {
 
@@ -103,38 +103,37 @@ public class MovieController {
 			model.addAttribute("movieFormDto", movieFormDto);
 		} catch (Exception e) {
 			e.printStackTrace();
-			model.addAttribute("errorMessage", "상품정보를 가져올때 에러가 발생했브니다.");
+			model.addAttribute("errorMessage", "영화정보를 가져올때 에러가 발생했브니다.");
 			model.addAttribute("movieFormDto", new MovieFormDto());
 			return "movie/movieForm";
 		}
 
 		return "movie/movieModifyForm";
 	}
-	
-	// 상품 수정(update)
-		@PostMapping(value = "/admin/movie/{movieId}")
-		public String movieUpdate(@Valid MovieFormDto movieFormDto, Model model, BindingResult bindingResult,
-				@RequestParam("movieImgFile") List<MultipartFile> movieImgFileList) {
 
-			System.out.println(movieFormDto.getId() + "ttttttttttttt");
-			if (bindingResult.hasErrors()) {
-				return "movie/movieForm";
-			}
+	// 영화 수정(update)
+	@PostMapping(value = "/admin/movie/{movieId}")
+	public String movieUpdate(@Valid MovieFormDto movieFormDto, Model model, BindingResult bindingResult,
+			@RequestParam("movieImgFile") List<MultipartFile> movieImgFileList) {
 
-			// 첫번째 이미지가 있는지 검사
-			if (movieImgFileList.get(0).isEmpty() && movieFormDto.getId() == null) {
-				model.addAttribute("errorMessage", "첫번째 상품 이미지는 필수입니다.");
-				return "movie/movieForm";
-			}
-
-			try {
-				movieService.UpdateMovie(movieFormDto, movieImgFileList);
-			} catch (Exception e) {
-				e.printStackTrace();
-				model.addAttribute("errorMessage", "상품수정 중 에러가 발생했습니다");
-				return "movie/movieForm";
-			}
-
-			return "redirect:/";
+		if (bindingResult.hasErrors()) {
+			return "movie/movieForm";
 		}
+
+		// 첫번째 이미지가 있는지 검사
+		if (movieImgFileList.get(0).isEmpty() && movieFormDto.getId() == null) {
+			model.addAttribute("errorMessage", "첫번째 영화 이미지는 필수입니다.");
+			return "movie/movieForm";
+		}
+
+		try {
+			movieService.UpdateMovie(movieFormDto, movieImgFileList);
+		} catch (Exception e) {
+			e.printStackTrace();
+			model.addAttribute("errorMessage", "영화 수정 중 에러가 발생했습니다");
+			return "movie/movieForm";
+		}
+
+		return "redirect:/";
+	}
 }
